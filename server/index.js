@@ -9,26 +9,32 @@ const Reference = require('./models/Reference');
 
 const app = express();
 
-const FRONTEND_URL = 'http://localhost:5173';
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
 
 // Middleware
 app.use(cors({
     origin: FRONTEND_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true // Session cookie'leri için gerekli
+    credentials: true
 }));
 app.use(express.json());
 
 // Session Config
 app.use(session({
-    secret: 'super_secret_key_change_me', // .env dosyasından alınmalı
+    secret: process.env.SESSION_SECRET || 'super_secret_key_change_me',
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: false, // HTTPS olmadığı için false (Development)
-        maxAge: 24 * 60 * 60 * 1000 // 1 gün
+        secure: process.env.NODE_ENV === 'production', // Production'da true olmalı
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // Cross-site cookies için production'da 'none'
+        maxAge: 24 * 60 * 60 * 1000
     }
 }));
+
+// Proxy trust for production (important for secure cookies behind proxies like Render/Vercel)
+if (process.env.NODE_ENV === 'production') {
+    app.set('trust proxy', 1);
+}
 
 // Passport Config
 app.use(passport.initialize());
@@ -47,7 +53,7 @@ passport.deserializeUser((obj, done) => {
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID || 'PLACEHOLDER_ID',
     clientSecret: process.env.GITHUB_CLIENT_SECRET || 'PLACEHOLDER_SECRET',
-    callbackURL: "http://localhost:5001/auth/github/callback"
+    callbackURL: process.env.CALLBACK_URL || "http://localhost:5001/auth/github/callback"
 },
     function (accessToken, refreshToken, profile, done) {
         // Burada kullanıcıyı sadece session'a kaydediyoruz, veritabanına yorum attığında kaydedeceğiz.
