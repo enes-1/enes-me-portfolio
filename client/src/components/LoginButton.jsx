@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const LoginButton = () => {
     const handleLogin = () => {
         // Backend'in yeni portu 5001
-        window.location.href = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL.replace('/api', '')}/auth/github` : 'http://localhost:5001/auth/github';
+        window.location.href = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL.replace('/api', '')}/auth/github` : 'https://enes-me-portfolioenes-portfolio-backend.onrender.com/auth/github';
     };
 
     return (

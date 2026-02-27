@@ -10,30 +10,30 @@ axios.defaults.withCredentials = true;
 
 const MessageCard = ({ msg, isLast }) => {
     // Rastgele syntax highlight renkleri
-  const colors = [
-  'text-purple-400',
-  'text-yellow-400',
-  'text-blue-400',
-  'text-green-400',
-  'text-pink-400',
-  'text-red-400',
-  'text-indigo-400',
-  'text-teal-400',
-  'text-cyan-400',
-  'text-emerald-400',
-  'text-lime-400',
-  'text-amber-400',
-  'text-orange-400',
-  'text-rose-400',
-  'text-fuchsia-400',
-  'text-violet-400',
-  'text-sky-400',
-  'text-slate-400',
-  'text-gray-400',
-  'text-zinc-400',
-  'text-neutral-400',
-  'text-stone-400'
-]; const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const colors = [
+        'text-purple-400',
+        'text-yellow-400',
+        'text-blue-400',
+        'text-green-400',
+        'text-pink-400',
+        'text-red-400',
+        'text-indigo-400',
+        'text-teal-400',
+        'text-cyan-400',
+        'text-emerald-400',
+        'text-lime-400',
+        'text-amber-400',
+        'text-orange-400',
+        'text-rose-400',
+        'text-fuchsia-400',
+        'text-violet-400',
+        'text-sky-400',
+        'text-slate-400',
+        'text-gray-400',
+        'text-zinc-400',
+        'text-neutral-400',
+        'text-stone-400'
+    ]; const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     return (
         <motion.div
@@ -71,7 +71,7 @@ const References = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState(null);
 
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
+    const API_URL = import.meta.env.VITE_API_URL || 'https://enes-me-portfolioenes-portfolio-backend.onrender.com/api';
 
     // Kullanıcı oturum kontrolü ve Pending Comment (Bekleyen Yorum) Mantığı
     useEffect(() => {
@@ -116,7 +116,7 @@ const References = () => {
         } catch (err) {
             console.error("Error fetching messages:", err);
             // Fallback - Mock Veri
-          
+
         }
     };
 
