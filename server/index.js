@@ -9,7 +9,9 @@ const Reference = require('./models/Reference');
 
 const app = express();
 
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+const FRONTEND_URL = process.env.NODE_ENV === 'production'
+    ? 'https://enes-me-portfolio.vercel.app'
+    : (process.env.FRONTEND_URL || 'http://localhost:5173');
 
 // Middleware
 app.use(cors({
@@ -53,7 +55,9 @@ passport.deserializeUser((obj, done) => {
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID || 'PLACEHOLDER_ID',
     clientSecret: process.env.GITHUB_CLIENT_SECRET || 'PLACEHOLDER_SECRET',
-    callbackURL: process.env.CALLBACK_URL || "http://localhost:5001/auth/github/callback"
+    callbackURL: process.env.NODE_ENV === 'production'
+        ? "https://enes-me-portfolioenes-portfolio-backend.onrender.com/auth/github/callback"
+        : (process.env.CALLBACK_URL || "http://localhost:5001/auth/github/callback")
 },
     function (accessToken, refreshToken, profile, done) {
         // Burada kullanıcıyı sadece session'a kaydediyoruz, veritabanına yorum attığında kaydedeceğiz.
