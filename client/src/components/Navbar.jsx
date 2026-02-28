@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('');
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navLinks = [
         { href: '#hero', label: 'Ana Sayfa' },
@@ -72,10 +73,36 @@ const Navbar = () => {
                         İletişim
                     </a>
 
-                    <button className="md:hidden p-2 text-slate-400 hover:text-white">
-                        <span className="text-2xl">☰</span>
+                    <button
+                        className="md:hidden p-2 text-slate-400 hover:text-white z-50 relative"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        <span className="text-2xl">{isMobileMenuOpen ? '✕' : '☰'}</span>
                     </button>
                 </div>
+            </div>
+
+            {/* Mobile Menu Dropdown */}
+            <div className={`md:hidden fixed inset-0 bg-slate-900/95 backdrop-blur-xl transition-all duration-300 flex items-center justify-center -z-10 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+                <nav className="flex flex-col items-center gap-6 p-4">
+                    {navLinks.map(link => (
+                        <a
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className={`text-2xl font-bold transition-colors ${activeSection === link.href.substring(1) ? 'text-blue-500' : 'text-slate-300 hover:text-white'}`}
+                        >
+                            {link.label}
+                        </a>
+                    ))}
+                    <a
+                        href="mailto:enesdogru747@gmail.com"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="mt-4 px-8 py-4 rounded-full bg-slate-50 text-slate-900 text-lg font-extrabold shadow-lg hover:bg-white transition-all"
+                    >
+                        İletişim
+                    </a>
+                </nav>
             </div>
         </header>
     );

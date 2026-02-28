@@ -155,7 +155,7 @@ const References = () => {
             {/* Nokta Deseni Arka Planı */}
             <div className="absolute inset-0 bg-grid-pattern opacity-10  pointer-events-none"></div>
 
-            <div className="max-w-2xl mx-auto px-24 relative z-10 hidden-scrollbar">
+            <div className="max-w-2xl mx-auto px-4 md:px-12 lg:px-24 relative z-10 hidden-scrollbar">
                 <div className="bg-slate-900/40 backdrop-blur-sm border border-slate-700/80 rounded-lg shadow-2xl p-6 min-h-[400px] flex flex-col justify-end">
 
                     {/* Mesaj Listesi */}
@@ -180,7 +180,6 @@ const References = () => {
                                 onChange={(e) => setComment(e.target.value)}
                                 placeholder={user ? "Bir referans bırakın..." : "Yorum yazmak için GitHub ile giriş yapın..."}
                                 className="w-full bg-slate-800/60 border border-slate-700 rounded-md py-2 pl-4 pr-24 text-slate-300 font-mono text-sm placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                                autoFocus
                                 disabled={isSubmitting}
                             />
                             {!user && (

@@ -25,8 +25,8 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className="container mx-auto px-14 flex flex-col lg:flex-row items-center gap-16 relative z-10">
-                <div className="flex-1 text-center lg:text-left">
+            <div className="container mx-auto px-6 md:px-14 flex flex-col lg:flex-row items-center gap-16 relative z-10">
+                <div className="flex-1 text-center lg:text-left mt-16 md:mt-0">
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-slate-400 text-xs font-medium mb-8 backdrop-blur-sm shadow-sm">
                         <span className="relative w-2 h-2">
                             <span className="absolute w-full h-full rounded-full bg-green-500 opacity-75 animate-ping"></span>
@@ -35,7 +35,7 @@ const Hero = () => {
                         Open to Work
                     </div>
 
-                    <h1 className="text-5xl md:text-6xl lg:text-[4.75rem] font-black leading-[1.05] mb-8 tracking-tighter text-slate-50">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.75rem] font-black leading-[1.05] mb-8 tracking-tighter text-slate-50">
                         Merhaba, Ben <br />
                         <span className="bg-gradient-to-r from-blue-500 via-blue-400 to-purple-500 bg-clip-text text-transparent">Enes.</span>
                     </h1>
@@ -89,10 +89,10 @@ const Hero = () => {
                             </div>
 
                             <div className="flex-1 p-6 font-mono text-sm bg-slate-900/95 relative overflow-hidden">
-                                <div className="absolute left-2 top-6 bottom-0 w-12 text-right pr-4 text-slate-700 select-none leading-relaxed hidden sm:block">
+                                <div className="absolute left-2 top-6 bottom-0 w-8 md:w-12 text-right pr-2 md:pr-4 text-slate-700 select-none leading-relaxed hidden sm:block">
                                     1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13
                                 </div>
-                                <div className="sm:pl-10 relative  text-slate-300 leading-relaxed">
+                                <div className="sm:pl-8 md:pl-10 relative overflow-x-auto text-slate-300 leading-relaxed text-xs md:text-sm">
                                     <span className="text-[#a78bfa]">import</span> &#123; <span className="text-[#fbbf24]">Passion</span>, <span className="text-[#fbbf24]">Creativity</span> &#125; <span className="text-[#a78bfa]">from</span> <span className="text-[#4ade80]">'@life/values'</span>;<br /><br />
                                     <span className="text-[#60a5fa]">const</span> <span className="text-[#fbbf24]">EnesPortfolio</span> = () =&gt; &#123;<br />
                                     &nbsp;&nbsp;<span className="text-[#60a5fa]">return</span> (<br />
