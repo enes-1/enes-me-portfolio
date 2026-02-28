@@ -47,8 +47,9 @@ const Hero = () => {
                     </div>
 
                     <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                        Karmaşık problemleri zarif, ölçeklenebilir ve modern kod yapılarıyla çözüyorum.
-                        Fikirlerinizi gerçeğe dönüştüren dijital deneyimler tasarlıyorum.
+                        Ben Enes Doğru, modern teknolojilerle uçtan uca çözümler geliştiren bir Full Stack Developer’ım.
+                        Performans, güvenlik ve ölçeklenebilirliği merkeze alan yazılım mimarileri tasarlayarak; fikirleri, gerçek dünyada değer üreten dijital ürünlere dönüştürüyorum.
+                        Amacım sadece çalışan değil, uzun ömürlü, sürdürülebilir ve yüksek kaliteli sistemler inşa etmek.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
