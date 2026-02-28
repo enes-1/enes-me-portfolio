@@ -28,15 +28,17 @@ const ProjectCard = ({ project, index }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="flex flex-col bg-slate-800/30 rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all hover:shadow-xl hover:shadow-blue-900/10 group"
+            className="flex flex-col bg-slate-800/30 rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all hover:shadow-xl hover:shadow-blue-900/10 group h-full"
         >
-            <div className="h-48 relative overflow-hidden bg-slate-800">
+            {/* Görsel kapsayıcısını büyütüp, background color'ını görsellerin karanlık temasına uyumlu yapıyoruz. 
+                object-contain ile resmin tamamen sığmasını sağlayıp kırpılmasını (taşmasını) engelliyoruz. */}
+            <div className="h-60 relative flex items-center justify-center bg-[#0d1117] p-4 overflow-hidden">
                 <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    className="w-full h-full object-contain rounded-lg opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 group-hover:opacity-0 transition-opacity`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-10 group-hover:opacity-0 transition-opacity pointer-events-none`}></div>
             </div>
 
             <div className="p-6 flex flex-col flex-grow">
@@ -60,7 +62,7 @@ const ProjectCard = ({ project, index }) => {
                 <div className="mt-auto">
                     <div className="flex flex-wrap gap-2 mb-6">
                         {project.tech.map((t, i) => (
-                            <span key={i} className="px-2 py-1 rounded-md bg-slate-800 text-xs text-gray-300 border border-slate-700 shadow-sm">
+                            <span key={i} className="px-2 py-1 rounded-md bg-slate-800 space-x-1 text-xs text-gray-300 border border-slate-700 shadow-sm">
                                 {t}
                             </span>
                         ))}
@@ -94,7 +96,7 @@ const Projects = () => {
         {
             title: "Kuran ve Namaz Pro",
             description: "Mobil cihazlar için özel olarak geliştirilmiş, Diyanet işleri uyumlu Kuran-ı Kerim okuma ve namaz vakti takip uygulaması. Şık kullanıcı arayüzü, zengin özellikler (kaza takibi, cami bulucu, dualar) ve dinamik tasarımıyla öne çıkar.",
-            tech: ["Flutter", "Dart", "Firebase", "SQLite"],
+            tech: ["Dart", "HTML", "Python", "C++", "CMake", "Swift"],
             gradient: "from-green-600 to-emerald-900",
             image: kuranVeNamazImg,
             github: "",
@@ -103,7 +105,7 @@ const Projects = () => {
         {
             title: "Online Toplantı Platformu",
             description: "Ekipler için tasarlanmış yüksek çözünürlüklü ve düşük gecikmeli, güvenilir çevrimiçi görüntülü görüşme platformu. WebRTC teknolojisi kullanılarak kesintisiz bir iletişim deneyimi sağlanmaktadır.",
-            tech: ["React", "WebRTC", "Node.js", "Socket.io"],
+            tech: ["HTML", "C#", "CSS"],
             gradient: "from-blue-600 to-indigo-900",
             image: meetingAppImg,
             github: "",
@@ -112,7 +114,7 @@ const Projects = () => {
         {
             title: "E-Ticaret Yönetim ve Satış Sistemi",
             description: "Modern, hızlı ve güvenli e-ticaret çözümü. Kapsamlı katalog yönetimi, zengin filtreler, güvenli ödeme altyapısı ve gelişmiş panel ile hem kullanıcılar hem de satıcılar için ideal.",
-            tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+            tech: ["JavaScript", "HTML", "Python"],
             gradient: "from-orange-600 to-red-900",
             image: eticaretImg,
             github: "",
@@ -121,7 +123,7 @@ const Projects = () => {
         {
             title: "Light Jump Oyun Geliştirme",
             description: "Mobil platformlar ve web için geliştirilen, oyuncuların reflekslerini zorlayan eğlenceli ve dinamik platform zıplama oyunu. Akıcı mekanikler ve optimize edilmiş bir oyun motoru deneyimi.",
-            tech: ["Unity", "C#", "2D Physics"],
+            tech: ["C#", "HLSL", "ShaderLab"],
             gradient: "from-yellow-500 to-orange-800",
             image: lightJumpImg,
             github: "",
@@ -130,7 +132,7 @@ const Projects = () => {
         {
             title: "Otopark Otomasyon Sistemi",
             description: "Geniş kapasiteli otoparkların günlük operasyonlarını kolaylaştıran; araç giriş-çıkış kontrolü, plaka takibi ve otomatik ücret hesaplaması yapan masaüstü yönetim sistemi.",
-            tech: ["C#", ".NET", "Windows Forms", "MSSQL"],
+            tech: ["HTML", "Visual Basic .NET"],
             gradient: "from-gray-600 to-slate-900",
             image: otoparkImg,
             github: "",
@@ -139,7 +141,7 @@ const Projects = () => {
         {
             title: "Güncel React Portfolyom",
             description: "Kişisel becerilerimi ve projelerimi sunduğum, son teknoloji frontend kütüphaneleri ve pürüzsüz animasyonlar ile tasarlanan modern ve güncel CV / portfolyo web sitesi.",
-            tech: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
+            tech: ["JavaScript", "CSS", "HTML"],
             gradient: "from-purple-600 to-fuchsia-900",
             image: portfolioImg,
             github: "",
@@ -148,7 +150,7 @@ const Projects = () => {
         {
             title: "İlk Nesil Portfolyo (Classic)",
             description: "Geçmişte geliştirmiş olduğum ve temellerin gücünü yansıtan eski versiyon portfolyo sitem. Sade yapısı, doğrudan içeriğe odaklanması ile dikkat çeker.",
-            tech: ["HTML5", "CSS3", "JavaScript"],
+            tech: ["HTML", "CSS", "JavaScript"],
             gradient: "from-slate-500 to-zinc-800",
             image: portfolioEskiImg,
             github: "",
@@ -167,7 +169,7 @@ const Projects = () => {
                 >
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">Öne Çıkan Projelerim</h2>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        Geliştirdiğim bazı önemli projeler aşağıda listelenmiştir. Kaynak kodları gizlilik standartlarına uygun olarak korunmaktadır, ancak detayları ve kodları incelemek için iletişime geçebilirsiniz.
+                        Geliştirdiğim bazı önemli projeler ve kullanılan teknolojilerin detayları aşağıda listelenmiştir. Kaynak kodları gizlilik standartlarına uygun olarak korunmaktadır, ancak detayları ve kodları incelemek için iletişime geçebilirsiniz.
                     </p>
                 </motion.div>
 
