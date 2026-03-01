@@ -69,6 +69,7 @@ const References = () => {
     const [user, setUser] = useState(null);
     const [comment, setComment] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const API_URL = import.meta.env.VITE_API_URL || 'https://enes-me-portfolioenes-portfolio-backend.onrender.com/api';
@@ -110,6 +111,7 @@ const References = () => {
     }, []);
 
     const fetchMessages = async () => {
+        setIsLoading(true);
         try {
             const response = await axios.get(`${API_URL}/references`);
             setMessages(response.data);
@@ -117,6 +119,8 @@ const References = () => {
             console.error("Error fetching messages:", err);
             // Fallback - Mock Veri
 
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -159,7 +163,14 @@ const References = () => {
                 <div className="bg-slate-900/40 backdrop-blur-sm border border-slate-700/80 rounded-lg shadow-2xl p-6 min-h-[400px] flex flex-col justify-end">
 
                     {/* Mesaj Listesi */}
-                    <div className="flex-grow max-h-60 overflow-y-auto space-y-1 mb-4 pr-2 custom-scrollbar">
+                    <div className="flex-grow max-h-60 overflow-y-auto space-y-1 mb-4 pr-2 custom-scrollbar relative">
+                        {isLoading ? (
+                            <div className="absolute inset-0 flex flex-col items-center justify-center space-y-3 bg-slate-900/40 backdrop-blur-[2px] rounded-lg z-10 transition-opacity duration-300">
+                                <div className="w-8 h-8 border-4 border-slate-600 border-t-blue-500 rounded-full animate-spin"></div>
+                                <span className="text-xs text-slate-400 font-mono animate-pulse">Sunucu uyanıyor, yorumlar yükleniyor...</span>
+                            </div>
+                        ) : null}
+
                         <AnimatePresence initial={false}>
                             {messages.map((msg, index) => (
                                 <MessageCard
