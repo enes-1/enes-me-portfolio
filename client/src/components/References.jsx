@@ -167,7 +167,7 @@ const References = () => {
                         {isLoading ? (
                             <div className="absolute inset-0 flex flex-col items-center justify-center space-y-3 bg-slate-900/40 backdrop-blur-[2px] rounded-lg z-10 transition-opacity duration-300">
                                 <div className="w-8 h-8 border-4 border-slate-600 border-t-blue-500 rounded-full animate-spin"></div>
-                                <span className="text-xs text-slate-400 font-mono animate-pulse">Sunucu uyanıyor, yorumlar yükleniyor...</span>
+                                <span className="text-xs text-slate-400 font-mono animate-pulse">Yükleniyor...</span>
                             </div>
                         ) : null}
 
