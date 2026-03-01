@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaGithub } from 'react-icons/fa';
 
 const Hero = () => {
     return (
@@ -53,10 +54,19 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <button className="w-full sm:w-auto h-14 px-8 rounded-full font-extrabold text-[15px] tracking-wide transition-all duration-300 cursor-pointer border-none bg-slate-900 text-slate-50 shadow-xl hover:bg-slate-800 hover:shadow-2xl hover:-translate-y-1 group flex items-center justify-center gap-2">
+                        <a href="#projects" className="w-full sm:w-auto h-14 px-8 rounded-full font-extrabold text-[15px] tracking-wide transition-all duration-300 cursor-pointer border-none bg-slate-900 text-slate-50 shadow-xl hover:bg-slate-800 hover:shadow-2xl hover:-translate-y-1 group flex items-center justify-center gap-2">
                             <span>Projelerimi Gör</span>
                             <span className="icon-arrow transition-transform group-hover:translate-x-1"></span>
-                        </button>
+                        </a>
+                        <a
+                            href="https://github.com/enes-1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full sm:w-auto h-14 px-8 rounded-full font-extrabold text-[15px] tracking-wide transition-all duration-300 cursor-pointer border border-slate-700 bg-slate-800/50 text-slate-50 shadow-xl hover:bg-slate-700 hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-2"
+                        >
+                            <FaGithub className="text-xl" />
+                            <span>GitHub Profilim</span>
+                        </a>
                     </div>
 
                     {/* <div className="mt-12 flex items-center justify-center lg:justify-start gap-6 opacity-80">
